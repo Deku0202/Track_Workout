@@ -4,21 +4,30 @@ from flask import Flask, flash, redirect, render_template, request, session
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
 import sqlite3
+from helper import login_required, lookup, look, rating
 
 # Flask constructor takes the name of 
 # current module (__name__) as argument.
 app = Flask(__name__)
 app.secret_key = "deku"
 
-# Configure SQLite database
 
 # Connect db
 conn = sqlite3.connect("database.db", check_same_thread=False)
 db = conn.cursor()
 
 
-# The route() function of the Flask class is a decorator, 
-# which tells the application which URL should call 
+@app.route("/logout")
+@login_required
+def logout():
+    """Log user out"""
+
+    # Forget any user_id
+    session.clear()
+
+    # Redirect user to login form
+    return redirect("/")
+
 # the associated function.
 @app.route('/')
 def main():
