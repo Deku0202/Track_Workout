@@ -1,6 +1,7 @@
 # Importing flask module in the project is mandatory
 # An object of Flask class is our WSGI application.
 from flask import Flask, flash, redirect, render_template, request, session
+from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
 import sqlite3
 
@@ -44,10 +45,10 @@ def regisiter():
             return render_template("signup.html")
         
         #generate password in hash 
-        
+        pwhash = generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)
         
         #insert the user_data into the database 
-        db.execute("INSERT INTO users (username, password) VALUES(?, ?)", (username, password))
+        db.execute("INSERT INTO users (username, password) VALUES(?, ?)", (username, pwhash))
         conn.commit()
         
         return redirect("/login")
