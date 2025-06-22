@@ -1,0 +1,21 @@
+html, body {
+    height: 100%;
+}
+.box {
+    border: 5px solid black;
+    width: 500px;
+    height: 400px;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 1rem;
+}
+
+.astext {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+}

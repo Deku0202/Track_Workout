@@ -2,9 +2,9 @@
 # An object of Flask class is our WSGI application.
 from flask import Flask, flash, redirect, render_template, request, session
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask_login import UserMixin
 import sqlite3
-from helper import login_required, lookup, look, rating
+from flask_login import UserMixin
+# from helper import login_required, lookup, look, rating
 
 # Flask constructor takes the name of 
 # current module (__name__) as argument.
@@ -18,7 +18,7 @@ db = conn.cursor()
 
 
 @app.route("/logout")
-@login_required
+# @login_required
 def logout():
     """Log user out"""
 
@@ -32,7 +32,7 @@ def logout():
 @app.route('/')
 def main():
     if len(session) != 1:
-        return redirect("/signup")
+        return redirect("/register")
 
     else:
         return render_template("home.html")
