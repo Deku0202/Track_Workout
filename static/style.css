@@ -1,5 +1,6 @@
 html, body {
     height: 100%;
+    background: blanchedalmond;
 }
 .box {
     border: 5px solid black;
@@ -18,4 +19,18 @@ html, body {
     margin:0;
     padding:0;
     cursor: pointer;
+}
+
+.w-pf {
+    width: 10%;
+}
+
+.cls-1 {
+    fill: black;
+    stroke: black;
+    stroke-width: 0.8px;
+}
+
+.body-color {
+    fill: rgb(102, 102, 102);
 }
