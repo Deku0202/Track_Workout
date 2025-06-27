@@ -27,7 +27,7 @@ html, body, main, .bg-card{
 
 .cls-1 {
     fill: rgb(21, 21, 21);
-    stroke: black;
+    stroke: rgb(21, 21, 21);;
     stroke-width: 0.8px;
 }
 

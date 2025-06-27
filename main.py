@@ -4,6 +4,8 @@ from flask import Flask, flash, redirect, render_template, request, session
 from werkzeug.security import check_password_hash, generate_password_hash
 import sqlite3
 from flask_login import UserMixin
+from datetime import datetime
+
 # from helper import login_required, lookup, look, rating
 
 # Flask constructor takes the name of 
@@ -35,7 +37,7 @@ def main():
         return redirect("/register")
 
     else:
-        return render_template("home.html")
+        return render_template("workout.html")
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
@@ -95,7 +97,19 @@ def register():
         return redirect("/login")
         
     return render_template("signup.html")
+
+@app.route('/start_session', methods=["POST"])
+def history():
     
+    if request.method == "POST":
+        
+        #get today date
+        today = datetime.today().strftime('%Y-%m-%d')
+        
+        #insert into history
+        db.execute("INSERT INTO History (user_id, total_time, date) VALUES(?, ?, ?)", (session['user_id'], 0, today))
+        conn.commit()
+            
 # main driver function
 if __name__ == '__main__':
 
