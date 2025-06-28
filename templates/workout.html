@@ -19,20 +19,54 @@
                 </ul>
             </header>
         </div>
-        <div class="container text-center d-flex flex-column h-75 justify-content-evenly">
+        <div class="container text-center d-flex flex-column h-75 justify-content-between">
             <!-- Username and default profile picture -->
             <div class="d-flex justify-content-center">
-                <div class="w-50 d-flex justify-content-evenly align-items-center rounded-3 p-3 m-lg-3">
-                    <img src="https://i.pinimg.com/736x/1f/b1/57/1fb1573daddd97101d6ef8c5fa6207d2.jpg" class="rounded-5 d-block img-fluid w-pf" alt="...">
-                    <h1 class="p-2 fw-bold align-i custom-font">Dekkuz</h1>
+                <div class="w-50 d-flex justify-content-evenly align-items-center rounded-3 m-lg-6">
+                    <h1>Title</h1>
+                    <h1>Timer</h1>
+                    <form action="/start_session" method="POST">
+                        <button type="submit">Start</button>
+                    </form>
+                    <button>End</button>
+                </div>  
+            </div>
+
+            <!-- workout card -->
+            <div class="d-flex justify-content-center">
+                <div class="bg-secondary w-50 h-100 d-flex flex-column justify-content-evenly align-items-center rounded-3 p-3 m-lg-3">
+                    <button>Add</button>
+
+                    <div class="search-box">
+                        <div class="row">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div>
+                        <!-- <h5>name</h5>
+                        <ul class="nav d-flex justify-content-between w-100">
+                            <li class="nav-item">set</li>
+                            <li class="nav-item">reps</li>
+                            <li class="nav-item">weight</li>
+                        </ul>
+                        <ul class="nav d-flex justify-content-between w-100">
+                            <li class="nav-item">1</li>
+                            <li class="nav-item">10</li>
+                            <li class="nav-item">10</li>
+                        </ul>
+                        <ul class="nav d-flex justify-content-between w-100">
+                            <li class="nav-item">1</li>
+                            <li class="nav-item">10</li>
+                            <li class="nav-item">10</li>
+                        </ul> -->
+                    </div>
                 </div>  
             </div>
 
             <!-- Muscle worked this week-->
             <div class="d-flex justify-content-center">
-                <div class="d-flex flex-column justify-content-around  w-75 h-100 rounded-3 p-3 align-items-center">
-                    <h1 class="fw-bold p-3 custom-font">Muscle Worked This week</h1>
-                    <svg class="col-10 col-md-5" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195.35 229.64">
+                <div class="bg-secondary d-flex flex-column justify-content-around  w-75 h-100 rounded-3 p-3 align-items-center">
+                    <svg class="col-7 col-md-4" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195.35 229.64">
                         <defs>
                         </defs>
                         <g id="f-w">

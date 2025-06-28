@@ -1,5 +1,6 @@
-html, body {
+html, body, main, .bg-card{
     height: 100%;
+    background: rgb(21, 21, 21);
 }
 .box {
     border: 5px solid black;
@@ -18,4 +19,36 @@ html, body {
     margin:0;
     padding:0;
     cursor: pointer;
+}
+
+.w-pf {
+    width: 30%;
+}
+
+.cls-1 {
+    fill: rgb(21, 21, 21);
+    stroke: rgb(21, 21, 21);;
+    stroke-width: 0.8px;
+}
+
+.body-color {
+    fill: rgb(102, 102, 102);
+}
+
+ .custom-font {
+    font-size: 1rem; /* default: mobile */
+    color: white;
+}
+
+@media (min-width: 768px) { /* tablets and up */
+    .custom-font {
+      font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 1200px) { /* desktops */
+    .custom-font {
+      font-size: 2rem;
+      color: rgb(165, 165, 165);
+    }
 }
