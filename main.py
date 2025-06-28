@@ -5,6 +5,8 @@ from werkzeug.security import check_password_hash, generate_password_hash
 import sqlite3
 from flask_login import UserMixin
 from datetime import datetime
+import requests
+
 
 # from helper import login_required, lookup, look, rating
 
@@ -109,7 +111,65 @@ def history():
         #insert into history
         db.execute("INSERT INTO History (user_id, total_time, date) VALUES(?, ?, ?)", (session['user_id'], 0, today))
         conn.commit()
-            
+
+# Used this function to add the data from api since I'm just going to use local database 
+# @app.route('/sync_exercise')
+# def sync():
+    
+#     url = "https://exercise-db-fitness-workout-gym.p.rapidapi.com/exercises"
+    
+#     headers = {
+#         "X-RapidAPI-Key": "d596432b2fmshd5d8561a785da4cp101137jsna77be07b5a68",
+#         "X-RapidAPI-Host": "exercise-db-fitness-workout-gym.p.rapidapi.com"
+#     }
+    
+#     response = requests.get(url, headers=headers)
+#     response.raise_for_status()
+#     exercises = response.json()
+#     exercises_ids = exercises.get("excercises_ids", [])
+
+#     for ex_id in exercises_ids:
+#         # Step 2: Fetch details for each exercise
+#         detail_url = f"https://exercise-db-fitness-workout-gym.p.rapidapi.com/exercise/{ex_id}"
+#         detail_resp = requests.get(detail_url, headers=headers)
+#         detail_resp.raise_for_status()
+#         detail = detail_resp.json()
+
+#         name = detail.get("name")
+#         if not name:
+#             continue
+
+#         # Insert Exercise
+#         db.execute("INSERT OR IGNORE INTO Exercise (name) VALUES (?)", (name,))
+#         db.execute("SELECT exercise_id FROM Exercise WHERE name = ?", (name,))
+#         exercise_db_id = db.fetchone()[0]
+
+#         # Insert primary muscles
+#         for muscle_name in detail.get("primaryMuscles", []):
+#             db.execute("INSERT OR IGNORE INTO Muscle (name) VALUES (?)", (muscle_name,))
+#             db.execute("SELECT muscle_id FROM Muscle WHERE name = ?", (muscle_name,))
+#             muscle_id = db.fetchone()[0]
+
+#             db.execute("""
+#                 INSERT OR IGNORE INTO ExerciseMuscle (exercise_id, muscle_id, role)
+#                 VALUES (?, ?, 'primary')
+#             """, (exercise_db_id, muscle_id))
+
+#         # Insert secondary muscles
+#         for muscle_name in detail.get("secondaryMuscles", []):
+#             db.execute("INSERT OR IGNORE INTO Muscle (name) VALUES (?)", (muscle_name,))
+#             db.execute("SELECT muscle_id FROM Muscle WHERE name = ?", (muscle_name,))
+#             muscle_id = db.fetchone()[0]
+
+#             db.execute("""
+#                 INSERT OR IGNORE INTO ExerciseMuscle (exercise_id, muscle_id, role)
+#                 VALUES (?, ?, 'secondary')
+#             """, (exercise_db_id, muscle_id))
+
+#         conn.commit()
+
+#     conn.close()
+    
 # main driver function
 if __name__ == '__main__':
 
